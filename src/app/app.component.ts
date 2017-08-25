@@ -86,7 +86,6 @@ const RECIPES: Recipe[] = [
     border-radius: 4px 0 0 4px;
   }
 `]
-  //styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'International Recipe Database';
