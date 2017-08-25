@@ -22,7 +22,9 @@ const RECIPES: Recipe[] = [
   <h1>{{title}}</h1>
   <h2>My Recipes</h2>
   <ul class="recipes">
-  <li *ngFor="let recipe of recipes" (click)="onSelect(recipe)">
+  <li *ngFor="let recipe of recipes"
+    [class.selected]="recipe === selectedRecipe" 
+    (click)="onSelect(recipe)  ">
     <span class="badge">{{recipe.id}}</span> {{recipe.name}}
   </li>
   </ul>
@@ -83,8 +85,8 @@ const RECIPES: Recipe[] = [
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
-`],
-  styleUrls: ['./app.component.css']
+`]
+  //styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'International Recipe Database';
