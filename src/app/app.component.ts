@@ -20,6 +20,12 @@ const RECIPES: Recipe[] = [
   templateUrl: './app.component.html',
   template: `
   <h1>{{title}}</h1>
+  <h2>My Heroes</h2>
+  <ul class="heroes">
+  <li *ngFor="let recipe of recipes">
+    <span class="badge">{{recipe.id}}</span> {{recipe.name}}
+  </li>
+  </ul>
   <h2>{{recipe.name}} details!</h2>
   <div><label>id: </label>{{recipe.id}}</div>
   <div>
