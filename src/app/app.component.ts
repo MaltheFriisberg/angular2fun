@@ -28,14 +28,7 @@ const RECIPES: Recipe[] = [
     <span class="badge">{{recipe.id}}</span> {{recipe.name}}
   </li>
   </ul>
-  <div *ngIf="selectedRecipe">
-  <h2>{{selectedRecipe.name}} details!</h2>
-  <div><label>id: </label>{{selectedRecipe.id}}</div>
-  <div>
-  <label>name: </label>
-  <input [(ngModel)]="selectedRecipe.name" placeholder="name">
-  </div>
-  </div>
+  <recipe-detail [recipe]="selectedRecipe"></recipe-detail>
   `,
   styles: [`
   .selected {
