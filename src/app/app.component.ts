@@ -1,19 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 /* how to import ts class */
 import { Recipe } from '../app/recipe'; 
+import {RecipeService} from './recipe.service';
 
-const RECIPES: Recipe[] = [
-  { id: 11, name: 'Lasagna' },
-  { id: 12, name: 'Sushi' },
-  { id: 13, name: 'Cabonarra' },
-  { id: 14, name: 'Pizza' },
-  { id: 15, name: 'Vegan Salad' },
-  { id: 16, name: 'Tomato Salad' },
-  { id: 17, name: 'The Last Supper' },
-  { id: 18, name: 'Grilled Salmon' },
-  { id: 19, name: 'Indian Curry' },
-  { id: 20, name: 'Fish Soup' }
-];
+
 
 @Component({
   selector: 'app-root',
@@ -78,14 +68,27 @@ const RECIPES: Recipe[] = [
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
-`]
+`],
+providers: [RecipeService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  
+
+  /*Dependency injecting the recipeService */
+  constructor(private recipeService : RecipeService) {}
+  
   title = 'International Recipe Database';
   selectedRecipe : Recipe; 
-  recipes = RECIPES;
+  recipes : Recipe[];
 
   onSelect(recipe : Recipe): void {
     this.selectedRecipe = recipe;
   } 
+  getRecipes(): void {
+    /*Handling the async callback with .then */
+    this.recipeService.getRecipes().then(recipes => this.recipes = recipes);
+  }
+  ngOnInit(): void {
+    this.getRecipes();
+  }
 }
